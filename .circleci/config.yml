@@ -15,7 +15,7 @@ jobs:
     
     steps:
       - checkout
-      - run: python tests.py
+      - run: python test.py
   
   deploy:
     docker:
@@ -33,5 +33,7 @@ workflows:
             - build
       - deploy:
           requires:
-            - build
             - test
+          filter:
+            branches:
+              only: main
